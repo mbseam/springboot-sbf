@@ -32,4 +32,10 @@ public class FilmController {
 		FilmsResponse filmsResponse =  mapper.map(filmService.getFilmByCategoryId(categoryId), FilmsResponse.class);
 		return new ResponseEntity<>(filmsResponse, HttpStatus.OK);
 	}
+
+	@RequestMapping(value = "/listbylanguage", method = RequestMethod.GET)
+	public ResponseEntity<Object> getFilmByLanguage(@RequestParam(value = "languageId") Integer languageId) {
+		FilmsResponse filmsResponse =  mapper.map(filmService.getFilmByLanguageId(languageId), FilmsResponse.class);
+		return new ResponseEntity<>(filmsResponse, HttpStatus.OK);
+	}
 }

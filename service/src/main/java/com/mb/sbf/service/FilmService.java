@@ -31,4 +31,10 @@ public class FilmService {
 		List<FilmDto> filmDtos = films.stream().map(f->mapper.map(f, FilmDto.class)).collect(Collectors.toList());
 		return new FilmsDto(filmDtos);
 	}
+
+	public FilmsDto getFilmByLanguageId(Integer languageId) {
+		List<Film> films = filmRepository.getFilmByLanguageId(languageId);
+		List<FilmDto> filmDtos = films.stream().map(f->mapper.map(f, FilmDto.class)).collect(Collectors.toList());
+		return new FilmsDto(filmDtos);
+	}
 }

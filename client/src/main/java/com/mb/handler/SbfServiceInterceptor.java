@@ -31,7 +31,6 @@ public class SbfServiceInterceptor implements HandlerInterceptor {
     public void postHandle(HttpServletRequest request, HttpServletResponse response,
                            Object handler, ModelAndView modelAndView) throws Exception {
         //logger.info("Request : " + request.toString());
-
     }
     @Override
     public void afterCompletion

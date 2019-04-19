@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class ListFilmDtoResponse extends BaseResponse {
-    private List<FilmDto> films = new ArrayList<FilmDto>();
+public class FilmsResponse extends  BaseResponse {
+
+    List<FilmDto> films = new ArrayList<>();
 }

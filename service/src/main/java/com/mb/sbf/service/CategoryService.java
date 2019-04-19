@@ -1,9 +1,13 @@
 package com.mb.sbf.service;
 
+import com.mb.sbf.dto.CategoriesDto;
+import com.mb.sbf.dto.CategoryDto;
+import com.mb.sbf.dto.FilmDto;
+import com.mb.sbf.dto.FilmsDto;
 import com.mb.sbf.exception.CategoryNotFoundException;
 import com.mb.sbf.repo.CategoryRepository;
 import com.mb.sbf.io.req.CreateCategoryRequest;
-import com.mb.sbf.io.res.ListCategoryResponse;
+import com.mb.sbf.io.res.CategoriesResponse;
 import com.mb.sbf.model.Category;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CategoryService {
@@ -28,20 +33,18 @@ public class CategoryService {
 		categoryRepository.save(category);
 	}
 
-	public ListCategoryResponse getCategories() {
-
-		ListCategoryResponse listCategoryResponse = new ListCategoryResponse();
+	public CategoriesDto getCategories() {
 		List<Category> categories = categoryRepository.findAll();
-		listCategoryResponse.setCategories(categories);
-		return listCategoryResponse;
+		List<CategoryDto> categoryDtos = categories.stream().map(f->mapper.map(f, CategoryDto.class)).collect(Collectors.toList());
+		return new CategoriesDto(categoryDtos);
 	}
 	
-	public Category getCategory(Long id) throws CategoryNotFoundException {
+	public CategoryDto getCategory(Long id) throws CategoryNotFoundException {
 		Optional<Category> category = categoryRepository.findById(id);
 
 		if(!category.isPresent())
 			throw new CategoryNotFoundException();
 
-		return mapper.map(category.get(), Category.class);
+		return mapper.map(category.get(), CategoryDto.class);
 	}
 }

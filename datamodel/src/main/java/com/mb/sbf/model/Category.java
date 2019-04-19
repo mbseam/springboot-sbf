@@ -4,7 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.util.*;
 
 @Entity
 @Data
@@ -18,4 +18,7 @@ public class Category extends BaseEntity implements Serializable{
 	private String name;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date lastUpdate;
+
+	@ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY)
+	private Set<Film> films = new HashSet<>();
 }

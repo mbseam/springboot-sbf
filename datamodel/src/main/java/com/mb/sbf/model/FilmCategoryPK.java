@@ -2,41 +2,20 @@ package com.mb.sbf.model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Embeddable
 @Data
 public class FilmCategoryPK implements Serializable {
-	//default serial version id, required for serializable classes.
-	private static final long serialVersionUID = 1L;
 
-	@Column(name="film_id", insertable=false, updatable=false)
-	private Integer filmId;
+    private static final long serialVersionUID = 1L;
 
-	@Column(name="category_id", insertable=false, updatable=false)
-	private Integer categoryId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("film_id")
+    private Film film;
 
-	public boolean equals(Object other) {
-		if (this == other) {
-			return true;
-		}
-		if (!(other instanceof FilmCategoryPK)) {
-			return false;
-		}
-		FilmCategoryPK castOther = (FilmCategoryPK)other;
-		return 
-			this.filmId.equals(castOther.filmId)
-			&& this.categoryId.equals(castOther.categoryId);
-	}
-
-	public int hashCode() {
-		final int prime = 31;
-		int hash = 17;
-		hash = hash * prime + this.filmId.hashCode();
-		hash = hash * prime + this.categoryId.hashCode();
-		
-		return hash;
-	}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("category_id")
+    private Category category;
 }

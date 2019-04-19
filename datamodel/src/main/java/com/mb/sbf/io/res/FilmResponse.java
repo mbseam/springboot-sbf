@@ -1,13 +1,11 @@
-package com.mb.sbf.dto;
+package com.mb.sbf.io.res;
 
 import lombok.Data;
 
-import javax.persistence.Column;
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 
 @Data
-public class FilmDto {
+public class FilmResponse {
 
     private String description;
     private String fulltext;

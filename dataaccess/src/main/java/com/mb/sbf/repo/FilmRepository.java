@@ -14,4 +14,7 @@ public interface FilmRepository extends CrudRepository<Film ,Long>{
 	
 	@Query(value = "select f.* from film f join film_category fc on fc.film_id = f.film_id join category c on c.category_id = fc.category_id  where c.category_id = ?1", nativeQuery = true)
 	List<Film> getFilmByCategoryId(Integer categoryId);
+
+	@Query(value = "select f.* from film f join language l on l.language_id = f.language_id  where l.language_id = ?1", nativeQuery = true)
+	List<Film> getFilmByLanguageId(Integer languageId);
 }

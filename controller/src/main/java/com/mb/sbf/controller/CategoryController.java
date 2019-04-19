@@ -1,9 +1,11 @@
 package com.mb.sbf.controller;
 
+import com.mb.sbf.dto.CategoriesDto;
+import com.mb.sbf.dto.CategoryDto;
 import com.mb.sbf.exception.CategoryNotFoundException;
-import com.mb.sbf.io.res.CategoryResponse;
 import com.mb.sbf.io.req.CreateCategoryRequest;
-import com.mb.sbf.io.res.ListCategoryResponse;
+import com.mb.sbf.io.res.CategoriesResponse;
+import com.mb.sbf.io.res.CategoryResponse;
 import com.mb.sbf.model.Category;
 import com.mb.sbf.service.CategoryService;
 import org.dozer.Mapper;
@@ -28,7 +30,9 @@ public class CategoryController {
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ResponseEntity<Object> getCategoryList() {
-        ListCategoryResponse listCategoryResponse = mapper.map(categoryService.getCategories(), ListCategoryResponse.class);
+
+        CategoriesDto categoriesDto = categoryService.getCategories();
+        CategoriesResponse listCategoryResponse = mapper.map(categoriesDto, CategoriesResponse.class);
         return new ResponseEntity<>(listCategoryResponse, HttpStatus.OK);
     }
 
@@ -41,9 +45,8 @@ public class CategoryController {
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<Object> getProductType(@RequestParam(value = "id") Long id) throws CategoryNotFoundException {
-        Category category = categoryService.getCategory(id);
-
-        CategoryResponse categoryResponse = mapper.map(category, CategoryResponse.class);
+        CategoryDto categoryDto = categoryService.getCategory(id);
+        CategoryResponse categoryResponse = mapper.map(categoryDto, CategoryResponse.class);
         return new ResponseEntity<>(categoryResponse, HttpStatus.OK);
     }
 }

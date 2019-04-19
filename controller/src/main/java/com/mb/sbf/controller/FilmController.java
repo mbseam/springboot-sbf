@@ -1,7 +1,6 @@
 package com.mb.sbf.controller;
 
-import com.mb.sbf.io.res.ListFilmDtoResponse;
-import com.mb.sbf.io.res.ListFilmResponse;
+import com.mb.sbf.io.res.FilmsResponse;
 import com.mb.sbf.service.FilmService;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,19 +23,13 @@ public class FilmController {
 
 	@RequestMapping(value = "/listbyrelease", method = RequestMethod.GET)
 	public ResponseEntity<Object> getFilmsByReleaseDate(@RequestParam(value = "year") Integer year) {
-		ListFilmResponse listFilmResponse = mapper.map(filmService.getFilmByReleaseYear(year), ListFilmResponse.class);
-		return new ResponseEntity<>(listFilmResponse, HttpStatus.OK);
+		FilmsResponse filmsResponse = mapper.map(filmService.getFilmByReleaseYear(year), FilmsResponse.class);
+		return new ResponseEntity<>(filmsResponse, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/listbycategory", method = RequestMethod.GET)
 	public ResponseEntity<Object> getFilmByCategory(@RequestParam(value = "categoryId") Integer categoryId) {
-		ListFilmResponse listFilmResponse =  mapper.map(filmService.getFilmByCategoryId(categoryId), ListFilmResponse.class);
-		return new ResponseEntity<>(listFilmResponse, HttpStatus.OK);
-	}
-
-	@RequestMapping(value = "/listbycategorymulti", method = RequestMethod.GET)
-	public ResponseEntity<Object> getFilmByCategoryMulti(@RequestParam(value = "categoryId") Integer categoryId) {
-		ListFilmDtoResponse listFilmDtoResponse = mapper.map(filmService.getFilmByCategoryId(categoryId), ListFilmDtoResponse.class);
-		return new ResponseEntity<>(listFilmDtoResponse, HttpStatus.OK);
+		FilmsResponse filmsResponse =  mapper.map(filmService.getFilmByCategoryId(categoryId), FilmsResponse.class);
+		return new ResponseEntity<>(filmsResponse, HttpStatus.OK);
 	}
 }

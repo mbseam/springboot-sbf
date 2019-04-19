@@ -6,6 +6,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -20,9 +24,6 @@ public class Film extends BaseEntity implements Serializable {
 	private String description;
 
 	private String fulltext;
-
-	@Column(name="language_id")
-	private Integer languageId;
 
 	@Column(name="last_update")
 	private Timestamp lastUpdate;
@@ -47,4 +48,16 @@ public class Film extends BaseEntity implements Serializable {
 	private String specialFeatures;
 
 	private String title;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "language_id")
+	private Language language;
+
+	@ManyToMany(cascade = { CascadeType.ALL })
+	@JoinTable(
+			name = "film_category",
+			joinColumns = { @JoinColumn(name = "category_id") },
+			inverseJoinColumns = { @JoinColumn(name = "film_id") }
+	)
+	Set<Category> categories = new HashSet<>();
 }

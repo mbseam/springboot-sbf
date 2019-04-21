@@ -21,4 +21,9 @@ public class StartController {
     public String welcomeText() {
         return welcomeText;
     }
+
+    @RequestMapping(value = "/hi")
+    public String hello() {
+        return "hello";
+    }
 }

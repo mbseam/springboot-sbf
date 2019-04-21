@@ -44,7 +44,7 @@ public class CategoryController {
 
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<Object> getProductType(@RequestParam(value = "id") Long id) throws CategoryNotFoundException {
+    public ResponseEntity<CategoryResponse> getCategory(@RequestParam(value = "id") Long id) throws CategoryNotFoundException {
         CategoryDto categoryDto = categoryService.getCategory(id);
         CategoryResponse categoryResponse = mapper.map(categoryDto, CategoryResponse.class);
         return new ResponseEntity<>(categoryResponse, HttpStatus.OK);

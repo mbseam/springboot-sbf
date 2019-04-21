@@ -29,7 +29,7 @@ public class CategoryController {
     Mapper mapper;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public ResponseEntity<Object> getCategoryList() {
+    public ResponseEntity<CategoriesResponse> getCategoryList() {
 
         CategoriesDto categoriesDto = categoryService.getCategories();
         CategoriesResponse listCategoryResponse = mapper.map(categoriesDto, CategoriesResponse.class);

@@ -22,19 +22,19 @@ public class FilmController {
 	Mapper mapper;
 
 	@RequestMapping(value = "/listbyrelease", method = RequestMethod.GET)
-	public ResponseEntity<Object> getFilmsByReleaseDate(@RequestParam(value = "year") Integer year) {
+	public ResponseEntity<FilmsResponse> getFilmsByReleaseDate(@RequestParam(value = "year") Integer year) {
 		FilmsResponse filmsResponse = mapper.map(filmService.getFilmByReleaseYear(year), FilmsResponse.class);
 		return new ResponseEntity<>(filmsResponse, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/listbycategory", method = RequestMethod.GET)
-	public ResponseEntity<Object> getFilmByCategory(@RequestParam(value = "categoryId") Integer categoryId) {
+	public ResponseEntity<FilmsResponse> getFilmByCategory(@RequestParam(value = "categoryId") Integer categoryId) {
 		FilmsResponse filmsResponse =  mapper.map(filmService.getFilmByCategoryId(categoryId), FilmsResponse.class);
 		return new ResponseEntity<>(filmsResponse, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/listbylanguage", method = RequestMethod.GET)
-	public ResponseEntity<Object> getFilmByLanguage(@RequestParam(value = "languageId") Integer languageId) {
+	public ResponseEntity<FilmsResponse> getFilmByLanguage(@RequestParam(value = "languageId") Integer languageId) {
 		FilmsResponse filmsResponse =  mapper.map(filmService.getFilmByLanguageId(languageId), FilmsResponse.class);
 		return new ResponseEntity<>(filmsResponse, HttpStatus.OK);
 	}

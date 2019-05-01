@@ -2,7 +2,10 @@ package com.mb.sbf.model;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Embeddable;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import java.io.Serializable;
 
 @Embeddable

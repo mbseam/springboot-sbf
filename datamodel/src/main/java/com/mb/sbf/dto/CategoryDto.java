@@ -2,8 +2,6 @@ package com.mb.sbf.dto;
 
 import lombok.Data;
 
-import java.sql.Date;
-
 @Data
 public class CategoryDto {
 

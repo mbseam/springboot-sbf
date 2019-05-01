@@ -1,10 +1,7 @@
 package com.mb.sbf.io.res;
 
 import com.mb.sbf.dto.CategoryDto;
-import com.mb.sbf.model.Category;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;

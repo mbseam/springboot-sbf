@@ -16,6 +16,7 @@ public class Category extends BaseEntity implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "category_id")
 	private Long categoryId;
 	private String name;
 	@Temporal(TemporalType.TIMESTAMP)

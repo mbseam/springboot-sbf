@@ -15,6 +15,7 @@ public class Language  extends BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column(name="language_id")
     private Long languageId;
     private String name;
     @Temporal(TemporalType.TIMESTAMP)

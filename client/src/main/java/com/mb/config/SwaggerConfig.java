@@ -1,4 +1,4 @@
-package com.mb.sbf;
+package com.mb.config;
 
 import com.google.common.base.Predicate;
 import org.springframework.context.annotation.Bean;

@@ -10,6 +10,7 @@ import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -22,7 +23,8 @@ public class CategoryService {
     CategoryRepository categoryRepository;
 	@Autowired
 	Mapper mapper;
-	
+
+	@Transactional
 	public void createCategory(CreateCategoryRequest categoryRequest) {
 		Category category = new Category();
 		category.setName(categoryRequest.getName());

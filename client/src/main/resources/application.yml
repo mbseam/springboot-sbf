@@ -1,15 +1,15 @@
 spring:
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/dvdrental
-    username: postgres
-    password: 2005
-  jpa:
-    hibernate:
-      ddl-auto: none
-    show-sql: true
-    properties.hibernate.temp.use_jdbc_metadata_defaults: false
-    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+#  datasource:
+#    driver-class-name: org.postgresql.Driver
+#    url: jdbc:postgresql://localhost:5432/dvdrental
+#    username: postgres
+#    password: 2005
+#  jpa:
+#    hibernate:
+#      ddl-auto: none
+#    show-sql: true
+#    properties.hibernate.temp.use_jdbc_metadata_defaults: false
+#    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
   application:
     name: config-client
   cloud:

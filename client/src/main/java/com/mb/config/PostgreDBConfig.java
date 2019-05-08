@@ -1,5 +1,6 @@
 package com.mb.config;
 
+import liquibase.integration.spring.SpringLiquibase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
@@ -78,5 +79,15 @@ public class PostgreDBConfig {
         properties.setProperty("spring.jpa.database-platform", "org.hibernate.dialect.PostgreSQL9Dialect");
 
         return properties;
+    }
+
+    @Bean
+    public SpringLiquibase liquibase() {
+        SpringLiquibase liquibase = new SpringLiquibase();
+        liquibase.setChangeLog("classpath:liquibase-changeLog.xml");
+        liquibase.setDefaultSchema("public");
+        liquibase.setShouldRun(true);
+        liquibase.setDataSource(getDataSource());
+        return liquibase;
     }
 }

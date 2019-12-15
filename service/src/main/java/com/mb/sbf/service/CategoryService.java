@@ -42,7 +42,7 @@ public class CategoryService {
 		Optional<Category> category = categoryRepository.findById(id);
 
 		if(!category.isPresent())
-			throw new CategoryNotFoundException("Kategori bulunamadı!");
+			throw new CategoryNotFoundException();
 
 		return mapper.map(category.get(), CategoryDto.class);
 	}

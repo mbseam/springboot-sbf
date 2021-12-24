@@ -1,8 +1,8 @@
 package com.mb.filter;
 
 import com.mb.sbf.App;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.ContentCachingRequestWrapper;
 import org.springframework.web.util.ContentCachingResponseWrapper;
@@ -15,7 +15,7 @@ import java.io.IOException;
 @Component
 public class LogFilter implements Filter {
 
-    private static final Logger logger = LoggerFactory.getLogger(App.class);
+    private static final Logger LOG = Logger.getLogger(LogFilter.class.getName());
 
     @Override
     public void destroy() {}
@@ -34,8 +34,8 @@ public class LogFilter implements Filter {
             String responseBody = new String(responseWrapper.getContentAsByteArray());
 
             responseWrapper.copyBodyToResponse();
-            logger.info("Request  : {} ", requestBody);
-            logger.info("Response : {} ", responseBody);
+            LOG.log(Level.INFO, "Request  : {} ", requestBody);
+            LOG.log(Level.INFO, "Response : {} ", responseBody);
         }
     }
 

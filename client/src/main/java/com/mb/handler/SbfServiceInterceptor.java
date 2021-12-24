@@ -16,23 +16,17 @@ public class SbfServiceInterceptor implements HandlerInterceptor {
     private static final Logger logger = LoggerFactory.getLogger(App.class);
 
     @Override
-    public boolean preHandle
-            (HttpServletRequest request, HttpServletResponse response, Object handler)
-            throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //String requestBody = IOUtils.toString(request.getInputStream(), Charset.forName("UTF-8").toString());
-
         //logger.info("Request : " + requestBody);
         return true;
     }
     @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response,
-                           Object handler, ModelAndView modelAndView) throws Exception {
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         //logger.info("Request : " + request.toString());
     }
     @Override
-    public void afterCompletion
-            (HttpServletRequest request, HttpServletResponse response, Object
-                    handler, Exception exception) throws Exception {
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object                    handler, Exception exception) throws Exception {
 
         //logger.info("Response : " + response.toString());
     }

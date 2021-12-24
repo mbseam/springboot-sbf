@@ -69,12 +69,9 @@ public class PostgreDBConfig {
     private Properties additionalProperties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.show_sql", "true");
-        //properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL9Dialect");
-        //properties.setProperty("hibernate.current_session_context_class", env.getProperty("spring.jpa.properties.hibernate.current_session_context_class"));
         properties.setProperty("hibernate.jdbc.lob.non_contextual_creation", "true");
-        properties.setProperty("spring.jpa.hibernate.ddl-auto", "create");
+        properties.setProperty("spring.jpa.hibernate.ddl-auto", "update");
         properties.setProperty("hibernate.format_sql", "true");
-
         properties.setProperty("spring.jpa.properties.hibernate.temp.use_jdbc_metadata_defaults", "false");
         properties.setProperty("spring.jpa.database-platform", "org.hibernate.dialect.PostgreSQL9Dialect");
 

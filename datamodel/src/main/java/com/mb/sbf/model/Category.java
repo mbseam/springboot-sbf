@@ -1,6 +1,6 @@
 package com.mb.sbf.model;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -9,14 +9,17 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Category extends BaseEntity implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "category_id")
+	//@Column(name = "category_id")
 	private Long categoryId;
 	private String name;
 	@Temporal(TemporalType.TIMESTAMP)
